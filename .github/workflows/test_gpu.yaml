@@ -2,7 +2,7 @@ name: test_gpu
 on: [push]
 jobs:
   train-and-report:
-    runs-on: [self-hosted, cml, gpu]
+    runs-on: [self-hosted, cml-gpu]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
