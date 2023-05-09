@@ -1,0 +1,23 @@
+name: test_gpu
+on: [push]
+jobs:
+  train-and-report:
+    runs-on: [self-hosted, cml, gpu]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - uses: iterative/setup-cml@v1
+      - uses: iterative/setup-dvc@v1
+      - name: Train model
+        env:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          CODEBLOCk="\'\'\'"
+          echo $CODEBLOCk > report.md
+          nvidia-smi >> report.md
+          echo $CODEBLOCk >> report.md
+          cml-send-comment report.md
+
+
