@@ -9,7 +9,7 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
-          CODEBLOCk="\'\'\'"
+          CODEBLOCk="\`\`\`"
           echo $CODEBLOCk > report.md
           nvidia-smi >> report.md
           echo $CODEBLOCk >> report.md
