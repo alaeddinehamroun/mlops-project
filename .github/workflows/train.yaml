@@ -1,0 +1,27 @@
+name: train model
+on: [push]
+jobs:
+  train-and-report:
+    runs-on: [self-hosted, cml-gpu]
+    steps:
+      - uses: actions/checkout@v3
+      - name: cml_run
+        env:
+          REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        run: |
+          pip install -r requirements.txt
+          dvc repro
+
+          git fetch --prune
+          dvc metrics diff --show-md master > report.md
+
+          # Add figure to the report
+          echo "## Validation"
+          cml-publish accuracy.png --md >> report.md
+          cml-publish loss.png --md >> report.md
+          cml-publish precision.png --md >> report.md
+          cml-publish recall.png --md >> report.md
+          cml-publish auc.png --md >> report.md
+
+          cml-send-comment report.md
+

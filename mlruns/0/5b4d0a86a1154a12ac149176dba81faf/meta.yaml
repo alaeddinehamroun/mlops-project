@@ -1,0 +1,15 @@
+artifact_uri: file:///home/alaeddine/Desktop/mlps-project/mlruns/0/5b4d0a86a1154a12ac149176dba81faf/artifacts
+end_time: 1685023887280
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 5b4d0a86a1154a12ac149176dba81faf
+run_name: defiant-lamb-727
+run_uuid: 5b4d0a86a1154a12ac149176dba81faf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1685023717656
+status: 4
+tags: []
+user_id: alaeddine

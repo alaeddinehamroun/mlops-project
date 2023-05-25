@@ -1,0 +1,15 @@
+artifact_uri: file:///home/alaeddine/Desktop/mlps-project/mlruns/0/08e6752a1a6540cdb0ae7863fb52f0b6/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 08e6752a1a6540cdb0ae7863fb52f0b6
+run_name: sincere-boar-5
+run_uuid: 08e6752a1a6540cdb0ae7863fb52f0b6
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1685020349701
+status: 1
+tags: []
+user_id: alaeddine

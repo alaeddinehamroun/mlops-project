@@ -1,0 +1,15 @@
+artifact_uri: file:///home/alaeddine/Desktop/mlps-project/mlruns/0/6d7288741a804d66a7fbe26623ed6ddc/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 6d7288741a804d66a7fbe26623ed6ddc
+run_name: mercurial-fly-419
+run_uuid: 6d7288741a804d66a7fbe26623ed6ddc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1685021299796
+status: 1
+tags: []
+user_id: alaeddine

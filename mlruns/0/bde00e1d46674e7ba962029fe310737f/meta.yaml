@@ -1,0 +1,15 @@
+artifact_uri: file:///home/alaeddine/Desktop/mlps-project/mlruns/0/bde00e1d46674e7ba962029fe310737f/artifacts
+end_time: 1685019669422
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: bde00e1d46674e7ba962029fe310737f
+run_name: sassy-gnu-395
+run_uuid: bde00e1d46674e7ba962029fe310737f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1685019665986
+status: 4
+tags: []
+user_id: alaeddine
