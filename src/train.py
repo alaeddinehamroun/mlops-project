@@ -1,7 +1,7 @@
 import os
 import matplotlib.pyplot as plt
 import mlflow
-from mlflow.models.signature import infer_signature
+import mlflow
 import tensorflow as tf
 
 from metrics import precision, recall, f1_score
@@ -9,94 +9,93 @@ mlflow.tensorflow.autolog()
 
 
 
-
-
 #os.environ['CUDA_VISIBLE_DEVICES'] = '0' 
-data_dir = 'data/training'
+data_dir = 'PokemonData'
 batch_size = 32
 img_height = 180
 img_width = 180
 
 
 
-with mlflow.start_run() as run:
+# Load dataset
+train_ds = tf.keras.utils.image_dataset_from_directory(
+    data_dir,
+    validation_split=0.2,
+    subset="training",
+    seed=123,
+    image_size=(img_height, img_width),
+    batch_size=batch_size)
 
-    # Load dataset
-    train_ds = tf.keras.utils.image_dataset_from_directory(
-        data_dir,
-        validation_split=0.2,
-        subset="training",
-        seed=123,
-        image_size=(img_height, img_width),
-        batch_size=batch_size)
+val_ds = tf.keras.utils.image_dataset_from_directory(
+    data_dir,
+    validation_split=0.2,
+    subset="validation",
+    seed=123,
+    image_size=(img_height, img_width),
+    batch_size=batch_size)
 
-    val_ds = tf.keras.utils.image_dataset_from_directory(
-        data_dir,
-        validation_split=0.2,
-        subset="validation",
-        seed=123,
-        image_size=(img_height, img_width),
-        batch_size=batch_size)
+
+# Get number of classes
+num_classes = len(train_ds.class_names)
+
+# Configure the dataset for performance
+# AUTOTUNE = tf.data.AUTOTUNE
+# train_ds = train_ds.cache().shuffle(1000).prefetch(buffer_size=AUTOTUNE)
+# val_ds = val_ds.cache().prefetch(buffer_size=AUTOTUNE)    
+
+# Data preprocessing
+
+# Normalization
+normalization_layer = tf.keras.layers.Rescaling(1./255)
+
+# 
+
+
+# Data augmentation
+data_augmentation = tf.keras.Sequential([
+    tf.keras.layers.RandomFlip("horizontal_and_vertical"),
+    tf.keras.layers.RandomRotation(0.2),
+])
+
+# Create the model
+model = tf.keras.models.Sequential([
+    normalization_layer,
+    data_augmentation, # inactive at test time
+    tf.keras.layers.Conv2D(32, (3,3), activation='relu'),
+    tf.keras.layers.MaxPooling2D(2, 2),
+    tf.keras.layers.Conv2D(64, (3,3), activation='relu'),
+    tf.keras.layers.MaxPooling2D(2,2),
+    tf.keras.layers.Conv2D(128, (3,3), activation='relu'),
+    tf.keras.layers.MaxPooling2D(2,2),
+    tf.keras.layers.Conv2D(128, (3,3), activation='relu'),
+    tf.keras.layers.MaxPooling2D(2,2),
+    tf.keras.layers.Flatten(),
+    tf.keras.layers.Dense(512, activation='relu'),
+    tf.keras.layers.Dense(151)
+])
+
+
+
+# Compile the model
+model.compile(
+    optimizer='adam',
+    loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+    metrics=['accuracy', precision, recall, f1_score])
+# Train the model
+epochs = 2
+
+mlflow.tensorflow.autolog()
+
+history = model.fit(train_ds,
+                epochs=epochs,
+                verbose=1,
+                validation_data=val_ds)
+
     
-
-    # Get number of classes
-    num_classes = len(train_ds.class_names)
-
-    # Configure the dataset for performance
-    # AUTOTUNE = tf.data.AUTOTUNE
-    # train_ds = train_ds.cache().shuffle(1000).prefetch(buffer_size=AUTOTUNE)
-    # val_ds = val_ds.cache().prefetch(buffer_size=AUTOTUNE)    
-
-    # Data preprocessing
-
-    # Normalization
-    normalization_layer = tf.keras.layers.Rescaling(1./255)
-
-    # 
-    
-
-    # Data augmentation
-    data_augmentation = tf.keras.Sequential([
-        tf.keras.layers.RandomFlip("horizontal_and_vertical"),
-        tf.keras.layers.RandomRotation(0.2),
-    ])
-
-    # Create the model
-    model = tf.keras.models.Sequential([
-      normalization_layer,
-      data_augmentation, # inactive at test time
-      tf.keras.layers.Conv2D(32, (3,3), activation='relu'),
-      tf.keras.layers.MaxPooling2D(2, 2),
-      tf.keras.layers.Conv2D(64, (3,3), activation='relu'),
-      tf.keras.layers.MaxPooling2D(2,2),
-      tf.keras.layers.Conv2D(128, (3,3), activation='relu'),
-      tf.keras.layers.MaxPooling2D(2,2),
-      tf.keras.layers.Conv2D(128, (3,3), activation='relu'),
-      tf.keras.layers.MaxPooling2D(2,2),
-      tf.keras.layers.Flatten(),
-      tf.keras.layers.Dense(512, activation='relu'),
-      tf.keras.layers.Dense(151)
-    ])
-
-
-
-    # Compile the model
-    model.compile(
-        optimizer='adam',
-        loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
-        metrics=['accuracy', precision, recall, f1_score])
-    # Train the model
-    epochs = 2
-    history = model.fit(train_ds,
-                    epochs=epochs,
-                    verbose=1,
-                    validation_data=val_ds)
-
-    
-
-
-
 mlflow.end_run()
+
+
+
 
 
 # acc=history.history['accuracy']

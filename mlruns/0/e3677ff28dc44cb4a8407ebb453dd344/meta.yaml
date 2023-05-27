@@ -1,0 +1,15 @@
+artifact_uri: file:///home/alaeddine/Desktop/mlps-project/mlruns/0/e3677ff28dc44cb4a8407ebb453dd344/artifacts
+end_time: 1685025161185
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e3677ff28dc44cb4a8407ebb453dd344
+run_name: adaptable-sow-598
+run_uuid: e3677ff28dc44cb4a8407ebb453dd344
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1685025046415
+status: 3
+tags: []
+user_id: alaeddine
