@@ -5,6 +5,12 @@ import mlflow
 import tensorflow as tf
 
 from metrics import precision, recall, f1_score
+from dotenv import load_dotenv
+load_dotenv()
+MLFLOW_TRACKING_URI=os.getenv('MLFLOW_TRACKING_URI')
+DATABRICKS_USER=os.getenv('DATABRICKS_USER')
+mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
+mlflow.set_experiment(f"/Users/{DATABRICKS_USER}/testing")
 mlflow.tensorflow.autolog()
 
 
@@ -92,6 +98,8 @@ history = model.fit(train_ds,
                 validation_data=val_ds)
 
     
+
+
 mlflow.end_run()
 
 
