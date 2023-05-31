@@ -5,9 +5,9 @@ import mlflow
 import tensorflow as tf
 import hydra
 from metrics import f1_score, precision, recall
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 # MLFLOW_TRACKING_URI=os.getenv('MLFLOW_TRACKING_URI')
 # DATABRICKS_USER=os.getenv('DATABRICKS_USER')
 # mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
