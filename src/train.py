@@ -2,7 +2,6 @@ import os
 import json
 import matplotlib.pyplot as plt
 import mlflow
-import mlflow
 import tensorflow as tf
 import hydra
 from metrics import f1_score, precision, recall

@@ -6,7 +6,6 @@ stages:
     outs:
     - accuracy.png
     - loss.png
-    - metrics.json
     metrics:
     - metrics.json:
         cache: false
