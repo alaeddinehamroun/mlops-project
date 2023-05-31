@@ -6,6 +6,7 @@ alembic==1.10.4
 amqp @ file:///home/conda/feedstock_root/build_artifacts/amqp_1650283665894/work
 antlr4-python3-runtime @ file:///home/conda/feedstock_root/build_artifacts/antlr-python-runtime-meta_1638309185939/work
 appdirs @ file:///home/conda/feedstock_root/build_artifacts/appdirs_1603108395799/work
+astroid==2.15.5
 astunparse==1.6.3
 async-timeout==3.0.1
 asyncssh @ file:///home/conda/feedstock_root/build_artifacts/asyncssh_1676909472748/work
@@ -38,6 +39,7 @@ cycler==0.11.0
 databricks-cli==0.17.7
 decorator @ file:///home/conda/feedstock_root/build_artifacts/decorator_1641555617451/work
 dictdiffer @ file:///home/conda/feedstock_root/build_artifacts/dictdiffer_1627027576828/work
+dill==0.3.6
 diskcache @ file:///home/conda/feedstock_root/build_artifacts/diskcache_1681800883590/work
 distro @ file:///home/conda/feedstock_root/build_artifacts/distro_1675116244235/work
 docker==6.1.1
@@ -52,6 +54,7 @@ dvc-render @ file:///home/conda/feedstock_root/build_artifacts/dvc-render_167901
 dvc-studio-client @ file:///home/conda/feedstock_root/build_artifacts/dvc-studio-client_1682019745098/work
 dvc-task @ file:///home/conda/feedstock_root/build_artifacts/dvc-task_1682658377453/work
 entrypoints==0.4
+exceptiongroup==1.1.1
 filelock @ file:///home/conda/feedstock_root/build_artifacts/filelock_1681839547898/work
 Flask==2.3.2
 flatbuffers==23.3.3
@@ -83,6 +86,8 @@ hydra-core @ file:///home/conda/feedstock_root/build_artifacts/hydra-core_167754
 idna @ file:///home/conda/feedstock_root/build_artifacts/idna_1663625384323/work
 importlib-metadata @ file:///home/conda/feedstock_root/build_artifacts/importlib-metadata_1682176699712/work
 importlib-resources @ file:///home/conda/feedstock_root/build_artifacts/importlib_resources_1676919000169/work
+iniconfig==2.0.0
+isort==5.12.0
 iterative-telemetry @ file:///home/conda/feedstock_root/build_artifacts/iterative-telemetry_1679018892732/work
 itsdangerous==2.1.2
 jax==0.4.8
@@ -93,6 +98,7 @@ jsonpointer==2.0
 keras==2.12.0
 kiwisolver==1.4.4
 kombu @ file:///home/conda/feedstock_root/build_artifacts/kombu_1666871866370/work
+lazy-object-proxy==1.9.0
 libclang==16.0.0
 libmambapy @ file:///home/conda/feedstock_root/build_artifacts/mamba-split_1680791035685/work/libmambapy
 Mako==1.2.4
@@ -101,6 +107,7 @@ Markdown==3.4.3
 markdown-it-py @ file:///home/conda/feedstock_root/build_artifacts/markdown-it-py_1677100944732/work
 MarkupSafe==2.1.2
 matplotlib==3.7.1
+mccabe==0.7.0
 mdurl @ file:///home/conda/feedstock_root/build_artifacts/mdurl_1639515908913/work
 ml-dtypes==0.1.0
 mlflow==2.3.1
@@ -136,10 +143,13 @@ pygit2 @ file:///home/conda/feedstock_root/build_artifacts/pygit2_1683496754283/
 Pygments @ file:///home/conda/feedstock_root/build_artifacts/pygments_1681904169130/work
 pygtrie @ file:///home/conda/feedstock_root/build_artifacts/pygtrie_1658067487470/work
 PyJWT==2.7.0
+pylint==2.17.4
 pyOpenSSL @ file:///home/conda/feedstock_root/build_artifacts/pyopenssl_1680037383858/work
 pyparsing @ file:///home/conda/feedstock_root/build_artifacts/pyparsing_1652235407899/work
 PySocks @ file:///home/conda/feedstock_root/build_artifacts/pysocks_1661604839144/work
+pytest==7.3.1
 python-dateutil==2.8.2
+python-dotenv==1.0.0
 pytz @ file:///home/conda/feedstock_root/build_artifacts/pytz_1680088766131/work
 pyu2f @ file:///home/conda/feedstock_root/build_artifacts/pyu2f_1604248910016/work
 PyYAML @ file:///home/conda/feedstock_root/build_artifacts/pyyaml_1666772387118/work
@@ -161,13 +171,14 @@ SQLAlchemy==2.0.12
 sqlparse==0.4.4
 sqltrie @ file:///home/conda/feedstock_root/build_artifacts/sqltrie_1680787652468/work
 tabulate @ file:///home/conda/feedstock_root/build_artifacts/tabulate_1665138452165/work
-²tensorboard==2.12.3
+tensorboard==2.12.3
 tensorboard-data-server==0.7.0
 tensorflow==2.12.0
 tensorflow-estimator==2.12.0
 tensorflow-io-gcs-filesystem==0.32.0
 termcolor==2.3.0
 threadpoolctl==3.1.0
+tomli==2.0.1
 tomlkit @ file:///home/conda/feedstock_root/build_artifacts/tomlkit_1683028165096/work
 toolz @ file:///home/conda/feedstock_root/build_artifacts/toolz_1657485559105/work
 tqdm @ file:///home/conda/feedstock_root/build_artifacts/tqdm_1677948868469/work
