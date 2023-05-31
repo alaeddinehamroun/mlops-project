@@ -132,13 +132,13 @@ def main(cfg):
     plt.plot(epochs, acc, 'r', "Training Accuracy")
     plt.plot(epochs, val_acc, 'b', "Validation Accuracy")
     plt.title('Training and validation accuracy')
-    plt.savefig('evaluation/accuracy.png', dpi=80)
+    plt.savefig('accuracy.png', dpi=80)
     plt.close()
     # Plot training and validation loss per epoch
     plt.plot(epochs, loss, 'r', "Training Loss")
     plt.plot(epochs, val_loss, 'b', "Validation Loss")
     plt.title('Training and validation loss')
-    plt.savefig('evaluation/loss.png', dpi=80)
+    plt.savefig('loss.png', dpi=80)
     plt.close()
 
     
@@ -150,7 +150,7 @@ def main(cfg):
     # print('Test recall :', rec)
 
     # Print metrics to file
-    with open("evaluation/metrics.json", "w") as outfile:
+    with open("metrics.json", "w") as outfile:
         json.dump(
             {
                 "accuracy": accuracy,
