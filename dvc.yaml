@@ -1,6 +1,6 @@
 stages:
   get_data:
-    cmd: dvc pull PokemonData
+    cmd: dvc pull
     outs:
     - PokemonData
   train:
