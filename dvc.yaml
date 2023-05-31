@@ -1,8 +1,4 @@
 stages:
-  get_data:
-    cmd: dvc pull
-    outs:
-    - PokemonData
   train:
     cmd: python src/train.py
     deps:
