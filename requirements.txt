@@ -8,8 +8,8 @@ certifi==2023.5.7
 charset-normalizer==3.1.0
 click==8.1.3
 cloudpickle==2.2.1
-contourpy @ file:///opt/conda/conda-bld/contourpy_1663827406301/work
-cycler @ file:///tmp/build/80754af9/cycler_1637851556182/work
+contourpy==1.0.5
+cycler==0.11.0
 databricks-cli==0.17.7
 docker==6.1.2
 entrypoints==0.4
@@ -35,14 +35,14 @@ jax==0.4.10
 Jinja2==3.1.2
 joblib==1.2.0
 keras==2.12.0
-kiwisolver @ file:///croot/kiwisolver_1672387140495/work
+kiwisolver==1.4.4
 libclang==16.0.0
 Mako==1.2.4
 Markdown==3.4.3
 MarkupSafe==2.1.2
-matplotlib @ file:///croot/matplotlib-suite_1679593461707/work
+matplotlib==3.7.1
 mkl-fft==1.3.6
-mkl-random @ file:///work/mkl/mkl_random_1682950433854/work
+mkl-random==1.2.2
 mkl-service==2.4.0
 ml-dtypes==0.1.0
 mlflow==2.3.2
@@ -53,18 +53,19 @@ nvidia-cudnn-cu11==8.6.0.163
 oauthlib==3.2.2
 omegaconf==2.3.0
 opt-einsum==3.3.0
-packaging @ file:///croot/packaging_1678965309396/work
+packaging==23.0
 pandas==2.0.2
 Pillow==9.4.0
+pip==23.1.2
 ply==3.11
 protobuf==4.23.2
 pyarrow==11.0.0
 pyasn1==0.5.0
 pyasn1-modules==0.3.0
 PyJWT==2.7.0
-pyparsing @ file:///opt/conda/conda-bld/pyparsing_1661452539315/work
+pyparsing==3.0.9
 PyQt5-sip==12.11.0
-python-dateutil @ file:///tmp/build/80754af9/python-dateutil_1626374649649/work
+python-dateutil==2.8.2
 python-dotenv==1.0.0
 pytz==2023.3
 PyYAML==6.0
@@ -74,8 +75,9 @@ requests-oauthlib==1.3.1
 rsa==4.9
 scikit-learn==1.2.2
 scipy==1.10.1
-sip @ file:///tmp/abs_44cd77b_pu/croots/recipe/sip_1659012365470/work
-six @ file:///tmp/build/80754af9/six_1644875935023/work
+setuptools==67.8.0
+sip==6.6.2
+six==1.16.0
 smmap==5.0.0
 SQLAlchemy==2.0.15
 sqlparse==0.4.4
@@ -87,109 +89,13 @@ tensorflow-estimator==2.12.0
 tensorflow-io-gcs-filesystem==0.32.0
 termcolor==2.3.0
 threadpoolctl==3.1.0
-toml @ file:///tmp/build/80754af9/toml_1616166611790/work
-tornado @ file:///opt/conda/conda-bld/tornado_1662061693373/work
+toml==0.10.2
+tornado==6.2
 typing_extensions==4.6.2
 tzdata==2023.3
 urllib3==1.26.16
 websocket-client==1.5.2
 Werkzeug==2.3.4
+wheel==0.38.4
 wrapt==1.14.1
-zipp @ file:///croot/zipp_1672387121353/work
-# This file may be used to create an environment using:
-# $ conda create --name <env> --file <this file>
-# platform: linux-64
-@EXPLICIT
-https://conda.anaconda.org/nvidia/linux-64/cuda-nvcc-11.3.58-h2467b9f_0.tar.bz2
-https://repo.anaconda.com/pkgs/main/linux-64/_libgcc_mutex-0.1-main.conda
-https://repo.anaconda.com/pkgs/main/linux-64/blas-1.0-mkl.conda
-https://repo.anaconda.com/pkgs/main/linux-64/ca-certificates-2023.01.10-h06a4308_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/ld_impl_linux-64-2.38-h1181459_1.conda
-https://repo.anaconda.com/pkgs/main/linux-64/libstdcxx-ng-11.2.0-h1234567_1.conda
-https://repo.anaconda.com/pkgs/main/noarch/tzdata-2023c-h04d1e81_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/libgomp-11.2.0-h1234567_1.conda
-https://repo.anaconda.com/pkgs/main/linux-64/_openmp_mutex-5.1-1_gnu.conda
-https://repo.anaconda.com/pkgs/main/linux-64/libgcc-ng-11.2.0-h1234567_1.conda
-https://repo.anaconda.com/pkgs/main/linux-64/cudatoolkit-11.8.0-h6a678d5_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/expat-2.4.9-h6a678d5_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/giflib-5.2.1-h5eee18b_3.conda
-https://repo.anaconda.com/pkgs/main/linux-64/icu-58.2-he6710b0_3.conda
-https://repo.anaconda.com/pkgs/main/linux-64/jpeg-9e-h5eee18b_1.conda
-https://repo.anaconda.com/pkgs/main/linux-64/lerc-3.0-h295c915_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/libbrotlicommon-1.0.9-h5eee18b_7.conda
-https://repo.anaconda.com/pkgs/main/linux-64/libdeflate-1.17-h5eee18b_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/libffi-3.4.4-h6a678d5_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/libuuid-1.41.5-h5eee18b_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/libwebp-base-1.2.4-h5eee18b_1.conda
-https://repo.anaconda.com/pkgs/main/linux-64/libxcb-1.15-h7f8727e_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/lz4-c-1.9.4-h6a678d5_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/ncurses-6.4-h6a678d5_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/nspr-4.35-h6a678d5_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/openssl-1.1.1t-h7f8727e_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/pcre-8.45-h295c915_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/tbb-2021.8.0-hdb19cb5_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/xz-5.4.2-h5eee18b_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/zlib-1.2.13-h5eee18b_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/glib-2.69.1-he621ea3_2.conda
-https://repo.anaconda.com/pkgs/main/linux-64/intel-openmp-2023.1.0-hdb19cb5_46305.conda
-https://repo.anaconda.com/pkgs/main/linux-64/libbrotlidec-1.0.9-h5eee18b_7.conda
-https://repo.anaconda.com/pkgs/main/linux-64/libbrotlienc-1.0.9-h5eee18b_7.conda
-https://repo.anaconda.com/pkgs/main/linux-64/libedit-3.1.20221030-h5eee18b_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/libevent-2.1.12-h8f2d780_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/libllvm14-14.0.6-hdb19cb5_3.conda
-https://repo.anaconda.com/pkgs/main/linux-64/libpng-1.6.39-h5eee18b_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/libxml2-2.10.3-hcbfbd50_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/readline-8.2-h5eee18b_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/tk-8.6.12-h1ccaba5_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/zstd-1.5.5-hc292b87_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/brotli-bin-1.0.9-h5eee18b_7.conda
-https://repo.anaconda.com/pkgs/main/linux-64/dbus-1.13.18-hb2f20db_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/freetype-2.12.1-h4a9f257_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/gstreamer-1.14.1-h5eee18b_1.conda
-https://repo.anaconda.com/pkgs/main/linux-64/krb5-1.19.4-h568e23c_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/libclang13-14.0.6-default_he11475f_1.conda
-https://repo.anaconda.com/pkgs/main/linux-64/libtiff-4.5.0-h6a678d5_2.conda
-https://repo.anaconda.com/pkgs/main/linux-64/libxkbcommon-1.0.1-h5eee18b_1.conda
-https://repo.anaconda.com/pkgs/main/linux-64/libxslt-1.1.37-h2085143_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/mkl-2023.1.0-h6d00ec8_46342.conda
-https://repo.anaconda.com/pkgs/main/linux-64/sqlite-3.41.2-h5eee18b_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/brotli-1.0.9-h5eee18b_7.conda
-https://repo.anaconda.com/pkgs/main/linux-64/fontconfig-2.14.1-h4c34cd2_2.conda
-https://repo.anaconda.com/pkgs/main/linux-64/gst-plugins-base-1.14.1-h6a678d5_1.conda
-https://repo.anaconda.com/pkgs/main/linux-64/lcms2-2.12-h3be6417_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/libclang-14.0.6-default_hc6dbbc7_1.conda
-https://repo.anaconda.com/pkgs/main/linux-64/libpq-12.9-h16c4e8d_3.conda
-https://repo.anaconda.com/pkgs/main/linux-64/libwebp-1.2.4-h11a3e52_1.conda
-https://repo.anaconda.com/pkgs/main/linux-64/nss-3.89.1-h6a678d5_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/python-3.9.16-h7a1cb2a_2.conda
-https://repo.anaconda.com/pkgs/main/noarch/cycler-0.11.0-pyhd3eb1b0_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/kiwisolver-1.4.4-py39h6a678d5_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/mkl-service-2.4.0-py39h5eee18b_1.conda
-https://repo.anaconda.com/pkgs/main/noarch/munkres-1.1.4-py_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/packaging-23.0-py39h06a4308_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/pillow-9.4.0-py39h6a678d5_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/ply-3.11-py39h06a4308_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/pyparsing-3.0.9-py39h06a4308_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/qt-main-5.15.2-h8373d8f_8.conda
-https://repo.anaconda.com/pkgs/main/linux-64/setuptools-67.8.0-py39h06a4308_0.conda
-https://repo.anaconda.com/pkgs/main/noarch/six-1.16.0-pyhd3eb1b0_1.conda
-https://repo.anaconda.com/pkgs/main/noarch/toml-0.10.2-pyhd3eb1b0_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/tornado-6.2-py39h5eee18b_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/wheel-0.38.4-py39h06a4308_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/zipp-3.11.0-py39h06a4308_0.conda
-https://repo.anaconda.com/pkgs/main/noarch/fonttools-4.25.0-pyhd3eb1b0_0.conda
-https://repo.anaconda.com/pkgs/main/noarch/importlib_resources-5.2.0-pyhd3eb1b0_1.conda
-https://repo.anaconda.com/pkgs/main/linux-64/numpy-base-1.24.3-py39h060ed82_1.conda
-https://repo.anaconda.com/pkgs/main/linux-64/pip-23.0.1-py39h06a4308_0.conda
-https://repo.anaconda.com/pkgs/main/noarch/python-dateutil-2.8.2-pyhd3eb1b0_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/qt-webengine-5.15.9-hbbf29b9_6.conda
-https://repo.anaconda.com/pkgs/main/linux-64/sip-6.6.2-py39h6a678d5_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/pyqt5-sip-12.11.0-py39h6a678d5_1.conda
-https://repo.anaconda.com/pkgs/main/linux-64/qtwebkit-5.212-h3fafdc1_5.conda
-https://repo.anaconda.com/pkgs/main/linux-64/pyqt-5.15.7-py39h6a678d5_1.conda
-https://repo.anaconda.com/pkgs/main/linux-64/contourpy-1.0.5-py39hdb19cb5_0.conda
-https://repo.anaconda.com/pkgs/main/linux-64/matplotlib-3.7.1-py39h06a4308_1.conda
-https://repo.anaconda.com/pkgs/main/linux-64/matplotlib-base-3.7.1-py39h417a72b_1.conda
-https://repo.anaconda.com/pkgs/main/linux-64/mkl_fft-1.3.6-py39h417a72b_1.conda
-https://repo.anaconda.com/pkgs/main/linux-64/mkl_random-1.2.2-py39h417a72b_1.conda
-https://repo.anaconda.com/pkgs/main/linux-64/numpy-1.24.3-py39hf6e8229_1.conda
+zipp==3.11.0
