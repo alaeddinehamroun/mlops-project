@@ -2,3 +2,5 @@
 /PokemonData
 
 /.env
+/accuracy.png
+/loss.png

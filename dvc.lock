@@ -1,0 +1,18 @@
+schema: '2.0'
+stages:
+  train:
+    cmd: python src/train.py
+    deps:
+    - path: src/train.py
+      md5: b016a08f6b9ecc4be1a22a16913c6242
+      size: 4982
+    outs:
+    - path: accuracy.png
+      md5: c481b92c0652e02a54393518e81e44bb
+      size: 9857
+    - path: loss.png
+      md5: cf1ea2ab70c243d33ce5ea2b814bb157
+      size: 10442
+    - path: metrics.json
+      md5: 5678feea2ee0f83d365932b5d88317d4
+      size: 127
