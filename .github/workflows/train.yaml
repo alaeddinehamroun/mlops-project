@@ -15,13 +15,5 @@ jobs:
           git fetch --prune
           dvc metrics diff --show-md master > report.md
 
-          # Add figure to the report
-          echo "## Validation"
-          cml-publish accuracy.png --md >> report.md
-          cml-publish loss.png --md >> report.md
-          cml-publish precision.png --md >> report.md
-          cml-publish recall.png --md >> report.md
-          cml-publish auc.png --md >> report.md
-
           cml-send-comment report.md
 

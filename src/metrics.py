@@ -1,5 +1,6 @@
 import tensorflow as tf
 
+# Recall and precision metrics for multi class classification in tensorflow keras
 
 # Custom metric functions
 def precision(y_true, y_pred):

@@ -3,7 +3,7 @@ import hashlib
 from PIL import Image
 
 # Remove duplicate images
-def comput_hash(file_path):
+def compute_hash(file_path):
     """
     Compute the MD5 hash of a file.
     
@@ -31,7 +31,7 @@ def remove_duplicates(root_dir):
         for filename in filenames:
             # Compute the image fingerprint
             file_path = os.path.join(dir_path, filename)
-            image_hash = comput_hash(file_path)
+            image_hash = compute_hash(file_path)
 
             # Check if the image is a duplicate
             if image_hash in image_hashes:

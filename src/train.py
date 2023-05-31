@@ -1,11 +1,12 @@
 import os
+import json
 import matplotlib.pyplot as plt
 import mlflow
 import mlflow
 import tensorflow as tf
 import hydra
 from omegaconf import DictConfig
-from metrics import precision, recall, f1_score
+from metrics import f1_score, precision, recall
 from dotenv import load_dotenv
 load_dotenv()
 MLFLOW_TRACKING_URI=os.getenv('MLFLOW_TRACKING_URI')
@@ -28,7 +29,7 @@ img_width = 180
 def main(cfg):
     
     # Load dataset
-    train_ds = tf.keras.utils.image_dataset_from_directory(
+    train_dataset = tf.keras.utils.image_dataset_from_directory(
         data_dir,
         validation_split=0.2,
         subset="training",
@@ -36,7 +37,7 @@ def main(cfg):
         image_size=(img_height, img_width),
         batch_size=batch_size)
 
-    val_ds = tf.keras.utils.image_dataset_from_directory(
+    validation_dataset = tf.keras.utils.image_dataset_from_directory(
         data_dir,
         validation_split=0.2,
         subset="validation",
@@ -45,14 +46,26 @@ def main(cfg):
         batch_size=batch_size)
 
 
+    # Create test set from validation set: determine how many batches of data are available in the validation set,
+    # then move 20% of them to a test set.
+    val_batches = tf.data.experimental.cardinality(validation_dataset)
+    test_dataset = validation_dataset.take(val_batches // 5)
+    validation_dataset = validation_dataset.skip(val_batches // 5)
+
+
+    # print('Number of validation batches: %d' % tf.data.experimental.cardinality(validation_dataset))
+    # print('Number of test batches: %d' % tf.data.experimental.cardinality(test_dataset))
+
+
     # Get number of classes
-    num_classes = len(train_ds.class_names)
+    num_classes = len(train_dataset.class_names)
 
     # Configure the dataset for performance
     # AUTOTUNE = tf.data.AUTOTUNE
-    # train_ds = train_ds.cache().shuffle(1000).prefetch(buffer_size=AUTOTUNE)
-    # val_ds = val_ds.cache().prefetch(buffer_size=AUTOTUNE)    
-
+    # train_dataset = train_dataset.prefetch(buffer_size=AUTOTUNE)
+    # validation_dataset = validation_dataset.prefetch(buffer_size=AUTOTUNE)
+    # test_dataset = test_dataset.prefetch(buffer_size=AUTOTUNE)
+    
     # Data preprocessing
 
     # Normalization
@@ -82,77 +95,80 @@ def main(cfg):
         tf.keras.layers.MaxPooling2D(2,2),
         tf.keras.layers.Flatten(),
         tf.keras.layers.Dense(512, activation='relu'),
-        tf.keras.layers.Dense(151)
+        tf.keras.layers.Dense(num_classes)
     ])
 
 
 
     # Compile the model
+    base_learning_rate = 0.0001
     model.compile(
-        optimizer='adam',
-        
+        optimizer=tf.keras.optimizers.Adam(learning_rate=base_learning_rate),
         loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
-        metrics=['accuracy', precision, recall, f1_score])
+        metrics=['accuracy', f1_score, precision, recall])
+    
+    #model.summary()
+    #len(model.trainable_variables)
+
     # Train the model
-    epochs = 2
+    num_epochs = 2
 
-    mlflow.tensorflow.autolog()
 
-    history = model.fit(train_ds,
-                    epochs=epochs,
-                    verbose=1,
-                    validation_data=val_ds)
+    history = model.fit(train_dataset,
+                    epochs=num_epochs,
+                    validation_data=validation_dataset)
+
+
+
+    # Evaluate the model
+    
+    # Learning curves
+    acc=history.history['accuracy']
+    val_acc=history.history['val_accuracy']
+    loss=history.history['loss']
+    val_loss=history.history['val_loss']
+    epochs=range(len(acc))
+    # Plot training and validation accuracy per epoch
+    plt.plot(epochs, acc, 'r', "Training Accuracy")
+    plt.plot(epochs, val_acc, 'b', "Validation Accuracy")
+    plt.title('Training and validation accuracy')
+    plt.savefig('evaluation/accuracy.png', dpi=80)
+    plt.close()
+    # Plot training and validation loss per epoch
+    plt.plot(epochs, loss, 'r', "Training Loss")
+    plt.plot(epochs, val_loss, 'b', "Validation Loss")
+    plt.title('Training and validation loss')
+    plt.savefig('evaluation/loss.png', dpi=80)
+    plt.close()
 
     
+    loss, accuracy, f1_s, prec, rec= model.evaluate(test_dataset)
+
+    # print('Test accuracy :', accuracy)
+    # print('Test f1_score :', f1_s)
+    # print('Test precision :', prec)
+    # print('Test recall :', rec)
+
+    # Print metrics to file
+    with open("evaluation/metrics.json", "w") as outfile:
+        json.dump(
+            {
+                "accuracy": accuracy,
+                "f1 score": f1_s,
+                "precision": prec,
+                "recall": rec
+            },
+            outfile
+        )
+
+
+
+    
+
 
 if __name__=="__main__":
     main()
 
 mlflow.end_run()
-
-
-
-
-
-# acc=history.history['accuracy']
-# val_acc=history.history['val_accuracy']
-# loss=history.history['loss']
-# val_loss=history.history['val_loss']
-# precision = history.history['precision']
-# recall = history.history['recall']
-# auc = history.history['auc']
-
-# epochs=range(len(acc))
-# # Plot training and validation accuracy per epoch
-# plt.plot(epochs, acc, 'r', "Training Accuracy")
-# plt.plot(epochs, val_acc, 'b', "Validation Accuracy")
-# plt.title('Training and validation accuracy')
-# plt.savefig('accuracy.png', dpi=80)
-# plt.close()
-
-# # Plot training and validation loss per epoch
-# plt.plot(epochs, loss, 'r', "Training Loss")
-# plt.plot(epochs, val_loss, 'b', "Validation Loss")
-# plt.title('Training and validation loss')
-# plt.savefig('loss.png', dpi=80)
-# plt.close()
-
-# # Plot precision per epoch
-# plt.plot(epochs, precision, 'r', "Precision")
-# plt.title('Precision')
-# plt.savefig('precision.png', dpi=80)
-# plt.close()
-
-# # Plot recall per epoch
-# plt.plot(epochs, recall, 'r', "Recall")
-# plt.title('Recall')
-# plt.savefig('recall.png', dpi=80)
-# plt.close()
-
-# # Plot AUC per epoch
-# plt.plot(epochs, auc, 'r', "AUC")
-# plt.title('AUC')
-# plt.savefig('auc.png', dpi=80)
-# plt.close()
 
 
