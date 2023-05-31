@@ -1,6 +1,6 @@
 import os
 import json
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import mlflow
 import tensorflow as tf
 import hydra
@@ -130,17 +130,17 @@ def main(cfg):
     val_loss=history.history['val_loss']
     epochs=range(len(acc))
     # Plot training and validation accuracy per epoch
-    plt.plot(epochs, acc, 'r', "Training Accuracy")
-    plt.plot(epochs, val_acc, 'b', "Validation Accuracy")
-    plt.title('Training and validation accuracy')
-    plt.savefig('accuracy.png', dpi=80)
-    plt.close()
-    # Plot training and validation loss per epoch
-    plt.plot(epochs, loss, 'r', "Training Loss")
-    plt.plot(epochs, val_loss, 'b', "Validation Loss")
-    plt.title('Training and validation loss')
-    plt.savefig('loss.png', dpi=80)
-    plt.close()
+    # plt.plot(epochs, acc, 'r', "Training Accuracy")
+    # plt.plot(epochs, val_acc, 'b', "Validation Accuracy")
+    # plt.title('Training and validation accuracy')
+    # plt.savefig('accuracy.png', dpi=80)
+    # plt.close()
+    # # Plot training and validation loss per epoch
+    # plt.plot(epochs, loss, 'r', "Training Loss")
+    # plt.plot(epochs, val_loss, 'b', "Validation Loss")
+    # plt.title('Training and validation loss')
+    # plt.savefig('loss.png', dpi=80)
+    # plt.close()
 
     
     loss, accuracy, f1_s, prec, rec= model.evaluate(test_dataset)

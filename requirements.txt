@@ -40,7 +40,6 @@ libclang==16.0.0
 Mako==1.2.4
 Markdown==3.4.3
 MarkupSafe==2.1.2
-matplotlib==3.7.1
 ml-dtypes==0.1.0
 mlflow==2.3.2
 numpy==1.23.5
