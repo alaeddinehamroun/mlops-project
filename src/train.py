@@ -18,6 +18,7 @@ mlflow.tensorflow.autolog()
 
 
 
+
 #os.environ['CUDA_VISIBLE_DEVICES'] = '0' 
 data_dir = 'PokemonData'
 batch_size = 32
