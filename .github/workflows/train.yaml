@@ -17,9 +17,9 @@ jobs:
           python-version: '3.9'
       - name: Create and activate conda environment
         run: |
-          conda create --name mlops --file spec-file.txt
-          conda install --name mlops --file spec-file.txt
-          conda activate mlops
+          conda env create -f environment.yml
+
+          conda activate tf
 
           pip install -r requirements.txt
 
@@ -30,7 +30,6 @@ jobs:
           dvc repro
           git fetch --prune
           dvc metrics diff --show-md master > report.md
-
 
           cml-send-comment report.md
 
