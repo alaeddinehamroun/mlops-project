@@ -19,12 +19,11 @@ jobs:
         run: |
           conda env create -f environment.yml
 
-          conda activate tf
-
       - name: cml_run
         env:
           REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
+          conda activate tf
           dvc repro
           git fetch --prune
           dvc metrics diff --show-md master > report.md
