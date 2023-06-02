@@ -1,5 +1,6 @@
 import tensorflow as tf
 
+
 def cnn_model():
     model = tf.keras.models.Sequential([
       tf.keras.layers.Conv2D(32, (3,3), activation='relu'),
