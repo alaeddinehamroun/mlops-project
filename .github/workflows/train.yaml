@@ -19,7 +19,7 @@ jobs:
         run: |
           conda create --name mlops --file requirements.txt
           conda install --name mlops --file requirements.txt
-          source activate mlops
+          conda activate mlops
 
       - name: cml_run
         env:
