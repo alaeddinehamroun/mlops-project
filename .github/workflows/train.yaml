@@ -17,9 +17,11 @@ jobs:
           python-version: '3.9'
       - name: Create and activate conda environment
         run: |
-          conda create --name mlops --file requirements.txt
-          conda install --name mlops --file requirements.txt
+          conda create --name mlops --file spec-file.txt
+          conda install --name mlops --file spec-file.txt
           conda activate mlops
+
+          pip install -r requirements.txt
 
       - name: cml_run
         env:
