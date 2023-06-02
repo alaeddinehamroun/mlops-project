@@ -1,11 +1,15 @@
-import mlflow
+import tensorflow as tf
+import cv2
+import numpy as np
 
-from sklearn.model_selection import train_test_split
-from sklearn.datasets import load_diabetes
 
-db = load_diabetes()
-X_train, X_test, y_train, y_test = train_test_split(db.data, db.target)
+new_model = tf.keras.models.load_model('./saved_model/my_model')
+new_model.summary()
 
-model = mlflow.sklearn.load_model("runs:/d7ade5106ee341e0b4c63a53a9776231")
-predictions = model.predict(X_test)
-print(predictions)
+test_image = './PokemonData/Weezing/2a1a51667d764271958221642e59efab.jpg'
+image = cv2.imread(test_image)
+image = cv2.resize(image, (180, 180))  # Resize to match the model's input size
+image = image / 255.0
+image = np.expand_dims(image, axis=0)  # Add a batch dimension
+
+print(new_model.predict(test_image))

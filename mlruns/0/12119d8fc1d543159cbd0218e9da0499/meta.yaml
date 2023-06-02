@@ -1,0 +1,15 @@
+artifact_uri: file:///home/alaeddine/Desktop/mlps-project/mlruns/0/12119d8fc1d543159cbd0218e9da0499/artifacts
+end_time: 1685743649851
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 12119d8fc1d543159cbd0218e9da0499
+run_name: sassy-fowl-786
+run_uuid: 12119d8fc1d543159cbd0218e9da0499
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1685743528122
+status: 3
+tags: []
+user_id: alaeddine

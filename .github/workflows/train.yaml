@@ -9,7 +9,13 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
-          pip install -r requirements.txt
+          curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o Miniconda3-latest-Linux-x86_64.sh
+          bash Miniconda3-latest-Linux-x86_64.sh
+
+          conda create --name mlops --file requirements.txt
+          conda install --name mlops --file requirements.txt
+          conda activate mlops
+
           dvc repro
 
           git fetch --prune
