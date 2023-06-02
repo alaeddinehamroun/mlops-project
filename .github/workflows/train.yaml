@@ -21,8 +21,6 @@ jobs:
 
           conda activate tf
 
-          pip install -r requirements.txt
-
       - name: cml_run
         env:
           REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
