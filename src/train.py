@@ -1,6 +1,5 @@
 import os
 import json
-import mlflow
 import tensorflow as tf
 import hydra
 from metrics import f1_score, precision, recall
@@ -12,7 +11,6 @@ from metrics import f1_score, precision, recall
 # mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
 # mlflow.set_experiment(f"/Users/{DATABRICKS_USER}/experiment-1")
 
-mlflow.tensorflow.autolog()
 
 
 
@@ -169,6 +167,5 @@ def main(cfg):
 if __name__=="__main__":
     main()
 
-mlflow.end_run()
 
 
