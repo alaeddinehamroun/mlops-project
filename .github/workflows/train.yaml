@@ -2,6 +2,9 @@ name: train model
 on: [push]
 jobs:
   train-and-report:
+    defaults:
+        run:
+          shell: bash -l {0}
     runs-on: [self-hosted, cml-gpu]
     steps:
       - name: Checkout repository
