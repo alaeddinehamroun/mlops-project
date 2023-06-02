@@ -11,12 +11,12 @@ jobs:
         uses: conda-incubator/setup-miniconda@v2
         with:
           miniconda-version: 'latest'
-          python-version: '3.8'
+          python-version: '3.9'
       - name: Create and activate conda environment
         run: |
           conda create --name mlops --file requirements.txt
           conda install --name mlops --file requirements.txt
-          conda activate mlops
+          source activate mlops
 
       - name: cml_run
         env:
