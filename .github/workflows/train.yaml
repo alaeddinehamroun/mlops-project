@@ -4,20 +4,25 @@ jobs:
   train-and-report:
     runs-on: [self-hosted, cml-gpu]
     steps:
-      - uses: actions/checkout@v3
-      - name: cml_run
-        env:
-          REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Set up Miniconda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          miniconda-version: 'latest'
+          python-version: '3.8'
+      - name: Create and activate conda environment
         run: |
-          curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o Miniconda3-latest-Linux-x86_64.sh
-          bash Miniconda3-latest-Linux-x86_64.sh
-
           conda create --name mlops --file requirements.txt
           conda install --name mlops --file requirements.txt
           conda activate mlops
 
+      - name: cml_run
+        env:
+          REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        run: |
           dvc repro
-
           git fetch --prune
           dvc metrics diff --show-md master > report.md
 
