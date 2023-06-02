@@ -7,6 +7,7 @@ stages:
     cmd: python src/train.py
     deps:
     - src/train.py
+    - PokemonData
     metrics:
     - metrics.json:
         cache: false

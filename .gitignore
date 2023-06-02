@@ -1,6 +1,14 @@
+# cache
+*__pycache__*
+.vscode/
+/mlruns
+/multirun
+/outputq
+
 /data
 /PokemonData
 
 /.env
 /accuracy.png
 /loss.png
+
