@@ -24,7 +24,7 @@ jobs:
           REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
           conda activate tf
-          dvc pull --run-cache
+          dvc pull PokemonData
           dvc repro
           git fetch --prune
           dvc metrics diff --show-md master > report.md
