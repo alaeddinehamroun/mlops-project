@@ -1,4 +1,4 @@
-name: train model
+name: CML & DVC
 on: [push]
 jobs:
   train-and-report:
