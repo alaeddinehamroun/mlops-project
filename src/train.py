@@ -4,7 +4,10 @@ import json
 import mlflow
 import tensorflow as tf
 import hydra
+from data.data_split import train_val_test_split
 from metrics import f1_score, precision, recall
+from models.cnn_model import cnn_model
+from models.resnet_model import resnet_model
 # from dotenv import load_dotenv
 
 # load_dotenv()
@@ -30,32 +33,8 @@ img_width = 180
 def main(cfg):
     
     # Load dataset
-    train_dataset = tf.keras.utils.image_dataset_from_directory(
-        data_dir,
-        validation_split=0.2,
-        subset="training",
-        seed=123,
-        image_size=(img_height, img_width),
-        batch_size=batch_size)
-
-    validation_dataset = tf.keras.utils.image_dataset_from_directory(
-        data_dir,
-        validation_split=0.2,
-        subset="validation",
-        seed=123,
-        image_size=(img_height, img_width),
-        batch_size=batch_size)
-
-
-    # Create test set from validation set: determine how many batches of data are available in the validation set,
-    # then move 20% of them to a test set.
-    val_batches = tf.data.experimental.cardinality(validation_dataset)
-    test_dataset = validation_dataset.take(val_batches // 5)
-    validation_dataset = validation_dataset.skip(val_batches // 5)
-
-
-    # print('Number of validation batches: %d' % tf.data.experimental.cardinality(validation_dataset))
-    # print('Number of test batches: %d' % tf.data.experimental.cardinality(test_dataset))
+    
+    train_dataset, validation_dataset, test_dataset = train_val_test_split(data_dir, img_height, img_width, batch_size)
 
 
     # Get number of classes
@@ -67,38 +46,9 @@ def main(cfg):
     # validation_dataset = validation_dataset.prefetch(buffer_size=AUTOTUNE)
     # test_dataset = test_dataset.prefetch(buffer_size=AUTOTUNE)
     
-    # Data preprocessing
-
-    # Normalization
-    normalization_layer = tf.keras.layers.Rescaling(1./255)
-
-    # 
-
-
-    # Data augmentation
-    data_augmentation = tf.keras.Sequential([
-        tf.keras.layers.RandomFlip("horizontal_and_vertical"),
-        tf.keras.layers.RandomRotation(0.2),
-    ])
-
+    
     # Create the model
-
-    model = tf.keras.models.Sequential([
-        normalization_layer,
-        data_augmentation, # inactive at test time
-        tf.keras.layers.Conv2D(cfg.model.layer1, (3,3), activation='relu'),
-        tf.keras.layers.MaxPooling2D(2, 2),
-        tf.keras.layers.Conv2D(cfg.model.layer2, (3,3), activation='relu'),
-        tf.keras.layers.MaxPooling2D(2,2),
-        tf.keras.layers.Conv2D(128, (3,3), activation='relu'),
-        tf.keras.layers.MaxPooling2D(2,2),
-        tf.keras.layers.Conv2D(128, (3,3), activation='relu'),
-        tf.keras.layers.MaxPooling2D(2,2),
-        tf.keras.layers.Flatten(),
-        tf.keras.layers.Dense(512, activation='relu'),
-        tf.keras.layers.Dense(num_classes)
-    ])
-
+    model = resnet_model(IMG_SIZE=180)
 
 
     # Compile the model
@@ -112,7 +62,7 @@ def main(cfg):
     #len(model.trainable_variables)
 
     # Train the model
-    num_epochs = 2
+    num_epochs = 10
 
 
     history = model.fit(train_dataset,
